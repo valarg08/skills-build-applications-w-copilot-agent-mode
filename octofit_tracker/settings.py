@@ -82,6 +82,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'octofit_db',
+        'HOST': 'localhost',  # Replace with your MongoDB host
+        'PORT': 27017,       # Replace with your MongoDB port
+        'USER': '',          # Replace with your MongoDB username if applicable
+        'PASSWORD': '',      # Replace with your MongoDB password if applicable
+        'AUTH_SOURCE': 'admin',  # Replace with your MongoDB authentication database if applicable
     }
 }
 
