@@ -34,4 +34,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('', api_root, name='api-root'),
+    path('test-db-connection/', views.test_db_connection, name='test_db_connection'),
 ]

@@ -1,6 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
+from django.db import connection
 from .models import User, Team, Activity, Leaderboard, Workout
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
 
@@ -33,3 +35,12 @@ def api_root(request, format=None):
         'leaderboard': '/api/leaderboard/',
         'workouts': '/api/workouts/',
     })
+
+def test_db_connection(request):
+    try:
+        # Attempt to connect to the database
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+        return JsonResponse({"status": "success", "message": "Database connection is working."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
